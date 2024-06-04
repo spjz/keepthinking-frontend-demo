@@ -67,11 +67,6 @@ export class Gallery extends Component {
           </swiper-slide>
 
         </swiper-container>
-
-        {/* <div id="pagination" className="grid grid-flow-col gap-2">
-          <span data-slide="1" className="page active size-3"></span>
-          <span data-slide="2" className="page size-3"></span>
-        </div> */}
       </Section>
     );
   }
