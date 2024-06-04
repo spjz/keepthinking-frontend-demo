@@ -1,12 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component, MouseEventHandler, PropsWithChildren } from 'react';
 import Section from '~/components/section';
 
 export class Artists extends Component {
 
-  state = {
-    showCover: false,
-    style: {}
-  };
+  constructor(props:PropsWithChildren) {
+    super(props);
+    this.state = {
+      showCover: false,
+      style: {}
+    };
+  }
 
   getArtists() {
     return [
@@ -64,11 +67,11 @@ export class Artists extends Component {
     ];
   }
 
-  handleMouseEnter(e) {
+  handleMouseEnter(e:MouseEvent) {
     this.setState({showCover: true, style: {"backgroundImage": "url('" + e.currentTarget.dataset.cover + "')"}});
   }
 
-  handleMouseLeave(e) {
+  handleMouseLeave(e:MouseEvent) {
     this.setState({showCover: false, style: {"backgroundImage": "none"}});
   }
 

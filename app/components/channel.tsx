@@ -6,7 +6,7 @@ export class Channel extends Component {
     return (
       <Section id="channel" titleBar={true} title="Channel" link="/channel">
         <div>
-          {/* <div className="w-full h-64 bg-no-repeat bg-cover bg-center bg-[url('/public/images/youtube.png')]"></div> */}
+          {/* <div className="w-full h-64 bg-no-repeat bg-cover bg-center bg-[url('/images/youtube.png')]"></div> */}
           <iframe className="w-full"
             // width="560"
             height="400"
