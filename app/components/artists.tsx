@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import Section from '~/components/section';
 
 export class Artists extends Component {
+
+  state = {
+    showCover: false,
+    style: {}
+  };
+
   getArtists() {
     return [
       "Franz Ackermann",
@@ -58,17 +64,29 @@ export class Artists extends Component {
     ];
   }
 
+  handleMouseEnter(e) {
+    this.setState({showCover: true, style: {"backgroundImage": "url('" + e.currentTarget.dataset.cover + "')"}});
+  }
+
+  handleMouseLeave(e) {
+    this.setState({showCover: false, style: {"backgroundImage": "none"}});
+  }
+
   render() {
+    
     return (
       <Section id="artists" title="Artists" titleBar={true}>
          <div className="w-full flex flex-row items-start">
             <ul className="w-auto flex-grow flex-col flex-wrap columns-1 sm:columns-3">
               {this.getArtists().map((artistName, i) => (
-                <li key={i}>{artistName}</li>
+                <li key={i}
+                    data-cover={"https://source.unsplash.com/random/?" + artistName}
+                    onMouseEnter={this.handleMouseEnter.bind(this)}
+                    onMouseLeave={this.handleMouseLeave.bind(this)}>{artistName}</li>
               ))}
             </ul>
 
-            <div className="size-64 bg-no-repeat bg-cover bg-center bg-[url('/public/images/artist.png')]"></div>
+           <div className="size-64 bg-no-repeat bg-cover bg-center" style={this.state.style}></div>
           </div>
       </Section>
     );

@@ -9,7 +9,7 @@ export class Section extends Component {
           <div className="w-full flex flex-row items-center justify-between pb-4">
 
             {this.props.title && (<h3 className="font-bold text-2xl">{this.props.title}</h3>)}
-            {this.props.link && (<a href="#" title="View all" className="flex flex-row items-center">
+            {this.props.link && (<a href="#" title="View all" className="flex flex-row items-center hover:underline">
               <span className="pr-1">View all</span>
               <img className="size-4" src="/icons/arrow-forward-outline.svg" />
             </a>)}
