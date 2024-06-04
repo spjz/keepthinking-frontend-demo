@@ -69,10 +69,12 @@ export class Artists extends Component {
 
   handleMouseEnter(e:MouseEvent) {
     this.setState({showCover: true, style: {"backgroundImage": "url('" + e.currentTarget.dataset.cover + "')"}});
+    return e;
   }
 
   handleMouseLeave(e:MouseEvent) {
     this.setState({showCover: false, style: {"backgroundImage": "none"}});
+    return e;
   }
 
   render() {
@@ -83,9 +85,14 @@ export class Artists extends Component {
             <ul className="w-auto flex-grow flex-col flex-wrap columns-1 sm:columns-3">
               {this.getArtists().map((artistName, i) => (
                 <li key={i}
-                    data-cover={"https://source.unsplash.com/random/?" + artistName}
-                    onMouseEnter={this.handleMouseEnter.bind(this)}
-                    onMouseLeave={this.handleMouseLeave.bind(this)}>{artistName}</li>
+                  data-cover={"https://source.unsplash.com/random/?" + artistName}
+                  onMouseEnter={this.handleMouseEnter.bind(this)}
+                  onMouseLeave={this.handleMouseLeave.bind(this)}
+                > 
+                  <a href="#" title={artistName} className="hover:underlne">
+                    {artistName}
+                  </a>
+                </li>
               ))}
             </ul>
 
