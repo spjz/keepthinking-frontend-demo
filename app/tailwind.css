@@ -17,13 +17,8 @@ body {
   font-family: "DINPRo Regular";
 }
 
-section.gallery {
-  .page {
-    background-color: #dfdfdd;
-  }
-  .page--active {
-    background-color: #ff5c5c;
-  }
+swiper-container::part(pagination) {
+  text-align: right;
 }
 
 footer {

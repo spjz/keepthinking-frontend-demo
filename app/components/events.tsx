@@ -4,8 +4,8 @@ import Section from '~/components/section';
 export class Events extends Component {
   render() {
     return (
-      <Section id="events" title="Events" titleBar={true}>
-         <div className="grid grid-cols-3 gap-4">
+      <Section id="events" title="Events" titleBar={true} link="/news">
+         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="py-2">
               <div className="w-full size-64 bg-no-repeat bg-cover bg-center bg-[url('/public/images/news-1.png')]"></div>
               <p className="py-2 font-bold">Exhibition: He Xiangyu monograph released by Distanz</p>

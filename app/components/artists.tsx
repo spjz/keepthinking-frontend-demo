@@ -60,9 +60,9 @@ export class Artists extends Component {
 
   render() {
     return (
-      <Section id="artists" title="Artists" titleBar={false}>
+      <Section id="artists" title="Artists" titleBar={true}>
          <div className="w-full flex flex-row items-start">
-            <ul className="w-auto flex-grow flex-col flex-wrap columns-3">
+            <ul className="w-auto flex-grow flex-col flex-wrap columns-1 sm:columns-3">
               {this.getArtists().map((artistName, i) => (
                 <li key={i}>{artistName}</li>
               ))}
