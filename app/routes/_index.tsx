@@ -19,7 +19,7 @@ export default function Index() {
 
       <Header title="Art Gallery" />
 
-      <main className="w-8/12 px-6">
+      <main className="w-full px-8">
         <Gallery />
         <Events />
         <Channel />

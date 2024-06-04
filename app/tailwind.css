@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "DINPro Regular";
+  src: url("/fonts/DINProRegular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "DINPro Regular";
+  font-weight: bold;
+  src: url("/fonts/DINProBold.otf") format("opentype");
+}
+
+body {
+  font-family: "DINPRo Regular";
+}
+
+section.gallery {
+  .page {
+    background-color: #dfdfdd;
+  }
+  .page--active {
+    background-color: #ff5c5c;
+  }
+}
+
+footer {
+  background-color: #424242;
+
+  img {
+    filter: invert();
+  }
+}
