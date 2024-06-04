@@ -68,7 +68,7 @@ export class Artists extends Component {
               ))}
             </ul>
 
-            <div className="size-64 bg-no-repeat bg-cover bg-center bg-[url('https://source.unsplash.com/random?artists')]"></div>
+            <div className="size-64 bg-no-repeat bg-cover bg-center bg-[url('/public/images/artist.png')]"></div>
           </div>
       </Section>
     );
