@@ -11,7 +11,8 @@ export class Gallery extends Component {
     return (
       <Section id="gallery" titleBar={false}>
         <swiper-container
-          speed="500"
+          autoplay="true"
+          speed="300"
           loop="true"
           css-mode="true"
           pagination="true"
