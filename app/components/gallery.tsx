@@ -23,7 +23,6 @@ export class Gallery extends Component {
             "--swiper-pagination-bullet-size": "12px",
             "--swiper-pagination-bullet-horizontal-gap": "6px",
             "--swiper-pagination-bottom": "46px",
-            "--swiper-pagination-width": "auto",
           }}
         >
 
