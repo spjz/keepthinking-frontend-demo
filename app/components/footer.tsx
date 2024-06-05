@@ -7,9 +7,9 @@ export class Footer extends Component {
         <div className="w-full px-8">
           <nav className="flex flex-row justify-between text-white text-2xl font-bold py-4">
             <div className="flex flex-col sm:flex-row">
-              <a className="sm:pr-4 py-2" href="#">Newsletter</a>
-              <a className="sm:pr-4 py-2" href="#">Contact</a>
-              <a className="sm:pr-4 py-2" href="#">Press room</a>
+              <a className="sm:pr-4 py-2 hover:underline" href="#">Newsletter</a>
+              <a className="sm:pr-4 py-2 hover:underline" href="#">Contact</a>
+              <a className="sm:pr-4 py-2 hover:underline" href="#">Press room</a>
             </div>
             <div className="flex flex-row">
               <a className="sm:pl-4 py-2" href="#">
