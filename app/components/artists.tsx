@@ -81,14 +81,13 @@ export class Artists extends Component {
     
     return (
       <Section id="artists" title="Artists" titleBar={true}>
-         <div className="w-full flex flex-row items-start">
+         <div className="w-full flex flex-row items-start relative">
             <ul className="w-auto flex-grow flex-col flex-wrap columns-1 sm:columns-3">
               {this.getArtists().map((artistName, i) => (
                 <li key={i}
                   data-cover={"https://source.unsplash.com/random/?" + artistName}
                   onMouseEnter={this.handleMouseEnter.bind(this)}
-                  onMouseLeave={this.handleMouseLeave.bind(this)}
-                > 
+                  onMouseLeave={this.handleMouseLeave.bind(this)}> 
                   <a href="#" title={artistName} className="hover:underlne">
                     {artistName}
                   </a>
@@ -96,8 +95,8 @@ export class Artists extends Component {
               ))}
             </ul>
 
-           <div className="size-64 bg-no-repeat bg-cover bg-center" style={this.state.style}></div>
-          </div>
+           <div className="size-64 bg-no-repeat bg-cover bg-center sticky top-2" style={this.state.style}></div>
+        </div>
       </Section>
     );
   }

@@ -12,10 +12,9 @@ export class Channel extends Component {
             height="400"
             src="https://www.youtube.com/embed/vlm5tgistqA?si=PDvVe5XsP6z5sN-w"
             title="YouTube video player"
-            frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
           ></iframe>
           <div className="py-2 grid sm:grid-cols-2 grid-cols-1 gap-3">
             <p className="py-1 font-bold">Anselm Kiefer in conversation with Tim Marlow in the Auditorium</p>
