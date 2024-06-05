@@ -2,10 +2,6 @@ import React, { Component } from 'react'
 import MenuIcon from '~/icons/menu-outline.svg';
 import SearchIcon from '~/icons/search-outline.svg';
 
-// type NavProps = {
-//   title: string
-// }
-
 export class Header extends Component {
 
   constructor(props) {
@@ -39,16 +35,32 @@ export class Header extends Component {
             </nav>
           </div>
         </header>
-        {this.state.hideMenu === false && <nav className="absolute top-0 right-0 left-0 p-8 bg-white">
-          <h1 onClick={this.handleToggleMenu.bind(this)}>x</h1>
-          <ul>
-            <li><a href="#" className="hover:underline">Home</a></li>
-            <li><a href="#" className="hover:underline">Art & Artists</a></li>
-            <li><a href="#" className="hover:underline">Exhibitions</a></li>
-            <li><a href="#" className="hover:underline">News</a></li>
-            <li><a href="#" className="hover:underline">About</a></li>
-            <li><a href="#" className="hover:underline">Private area</a></li>
+        {this.state.hideMenu === false && <nav className="absolute top-0 right-0 left-0 z-50 px-8 bg-white shadow-xl">
+          <ul className="flex flex-col w-full">
+            <li className="py-4 border-b-2 border-b-gray-400 text-3xl">
+              <a href="#" className="hover:underline">Home</a>
+            </li>
+            <li className="py-4 border-b-2 border-b-gray-400 text-3xl">
+              <a href="#" className="hover:underline">Art & Artists</a>
+            </li>
+            <li className="py-4 border-b-2 border-b-gray-400 text-3xl">
+              <a href="#" className="hover:underline">Exhibitions</a>
+            </li>
+            <li className="py-4 border-b-2 border-b-gray-400 text-3xl">
+              <a href="#" className="hover:underline">News</a>
+            </li>
+            <li className="py-4 border-b-2 border-b-gray-400 text-3xl">
+              <a href="#" className="hover:underline">About</a>
+            </li>
+            <li className="py-4 border-b-gray-400 text-3xl">
+              <a href="#" className="hover:underline">Private area</a>
+            </li>
           </ul>
+          <a href="#"
+            onClick={this.handleToggleMenu.bind(this)}
+            className="absolute top-0 right-0 py-6 px-8">
+              <img src="/public/icons/close.svg" />
+          </a>
         </nav>}
       </div>
     );
