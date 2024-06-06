@@ -8,7 +8,7 @@ export class Events extends Component {
          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="py-2">
               <a href="#" className="hover:opacity-50 hover:underline">
-                <div className="w-full size-64 bg-no-repeat bg-cover bg-center bg-[url('/images/news-1.png')]"></div>
+                <div className="w-full size-80 bg-no-repeat bg-cover bg-center bg-[url('/images/news-1.png')]"></div>
                 <p className="py-2 font-bold">Exhibition: He Xiangyu monograph released by Distanz</p>
               </a>
               <p className="py-1">From March 2016</p>
@@ -16,7 +16,7 @@ export class Events extends Component {
             </div>
             <div className="py-2">
               <a href="#" className="hover:opacity-50 hover:underline">
-                <div className="w-full size-64 bg-no-repeat bg-cover bg-center bg-[url('/images/news-2.png')]"></div>
+                <div className="w-full size-80 bg-no-repeat bg-cover bg-center bg-[url('/images/news-2.png')]"></div>
                 <p className="py-2 font-bold">Exhibition: Runa islam at SFMOMA, San Francisco</p>
               </a>
               <p className="py-1">From March 2016</p>
@@ -24,7 +24,7 @@ export class Events extends Component {
             </div>
             <div className="py-2">
               <a href="#" className="hover:opacity-50 hover:underline">
-                <div className="w-full size-64 bg-no-repeat bg-cover bg-center bg-[url('/images/news-3.png')]"></div>
+                <div className="w-full size-80 bg-no-repeat bg-cover bg-center bg-[url('/images/news-3.png')]"></div>
                 <p className="py-2 font-bold">Preview: White Cube Mason's Yard</p>
               </a>
               <p className="py-1">19 January 2017, 6 to 8pm</p>

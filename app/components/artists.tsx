@@ -7,7 +7,8 @@ export class Artists extends Component {
     super(props);
     this.state = {
       showCover: false,
-      style: {}
+      style: {},
+      images: []
     };
   }
 
@@ -68,17 +69,40 @@ export class Artists extends Component {
   }
 
   handleMouseEnter(e:MouseEvent) {
-    this.setState({showCover: true, style: {"backgroundImage": "url('" + e.currentTarget.dataset.cover + "')"}});
+    this.setState({
+      showCover: true,
+      style: {"backgroundImage": "url('" + e.currentTarget.dataset.cover + "')"}
+    });
+    if (!e.currentTarget.classList.contains('underline')) {
+      e.currentTarget.classList.add('underline');
+    }
     return e;
   }
 
   handleMouseLeave(e:MouseEvent) {
-    this.setState({showCover: false, style: {"backgroundImage": "none"}});
+    this.setState({
+      showCover: false,
+      style: {"backgroundImage": "url('" + this.state.defaultCover + "')"}
+    });
+    if (e.currentTarget.classList.contains('underline')) {
+      e.currentTarget.classList.remove('underline');
+    }
     return e;
   }
 
+  // Preload artist images
+  componentDidMount() {
+    let images:Array<HTMLImageElement> = [];
+    this.getArtists().map(
+      (artistName, i) => {
+        images[i] = new Image();
+        images[i].src = 'https://source.unsplash.com/random/?' + artistName;
+      }
+    );
+    this.setState({images: images});
+  }
+
   render() {
-    
     return (
       <Section id="artists" title="Artists" titleBar={true}>
          <div className="w-full flex flex-row items-start relative">
@@ -88,14 +112,14 @@ export class Artists extends Component {
                   data-cover={"https://source.unsplash.com/random/?" + artistName}
                   onMouseEnter={this.handleMouseEnter.bind(this)}
                   onMouseLeave={this.handleMouseLeave.bind(this)}> 
-                  <a href="#" title={artistName} className="hover:underlne">
+                  <a href="#" title={artistName}>
                     {artistName}
                   </a>
                 </li>
               ))}
             </ul>
 
-           <div className="size-64 bg-no-repeat bg-cover bg-center sticky top-2" style={this.state.style}></div>
+            <div className="transition-[background-image] size-64 bg-no-repeat bg-cover bg-center sticky top-2" style={this.state.style}></div>
         </div>
       </Section>
     );
