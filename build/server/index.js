@@ -104,7 +104,7 @@ const entryServer = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineP
   __proto__: null,
   default: handleRequest
 }, Symbol.toStringTag, { value: "Module" }));
-const styles = "/assets/tailwind-DVp5aFzu.css";
+const styles = "/assets/tailwind-BX4dwlXg.css";
 function Layout({ children }) {
   return /* @__PURE__ */ jsxs("html", { lang: "en", className: "h-full", children: [
     /* @__PURE__ */ jsxs("head", { children: [
@@ -221,7 +221,8 @@ class Artists extends Component {
     super(props);
     this.state = {
       showCover: false,
-      style: {}
+      style: {},
+      images: []
     };
   }
   getArtists() {
@@ -280,12 +281,35 @@ class Artists extends Component {
     ];
   }
   handleMouseEnter(e) {
-    this.setState({ showCover: true, style: { "backgroundImage": "url('" + e.currentTarget.dataset.cover + "')" } });
+    this.setState({
+      showCover: true,
+      style: { "backgroundImage": "url('" + e.currentTarget.dataset.cover + "')" }
+    });
+    if (!e.currentTarget.classList.contains("underline")) {
+      e.currentTarget.classList.add("underline");
+    }
     return e;
   }
   handleMouseLeave(e) {
-    this.setState({ showCover: false, style: { "backgroundImage": "none" } });
+    this.setState({
+      showCover: false,
+      style: { "backgroundImage": "url('" + this.state.defaultCover + "')" }
+    });
+    if (e.currentTarget.classList.contains("underline")) {
+      e.currentTarget.classList.remove("underline");
+    }
     return e;
+  }
+  // Preload artist images
+  componentDidMount() {
+    let images = [];
+    this.getArtists().map(
+      (artistName, i) => {
+        images[i] = new Image();
+        images[i].src = "https://source.unsplash.com/random/?" + artistName;
+      }
+    );
+    this.setState({ images });
   }
   render() {
     return /* @__PURE__ */ jsx(Section, { id: "artists", title: "Artists", titleBar: true, children: /* @__PURE__ */ jsxs("div", { className: "w-full flex flex-row items-start relative", children: [
@@ -295,11 +319,11 @@ class Artists extends Component {
           "data-cover": "https://source.unsplash.com/random/?" + artistName,
           onMouseEnter: this.handleMouseEnter.bind(this),
           onMouseLeave: this.handleMouseLeave.bind(this),
-          children: /* @__PURE__ */ jsx("a", { href: "#", title: artistName, className: "hover:underlne", children: artistName })
+          children: /* @__PURE__ */ jsx("a", { href: "#", title: artistName, children: artistName })
         },
         i
       )) }),
-      /* @__PURE__ */ jsx("div", { className: "size-64 bg-no-repeat bg-cover bg-center sticky top-2", style: this.state.style })
+      /* @__PURE__ */ jsx("div", { className: "transition-[background-image] size-64 bg-no-repeat bg-cover bg-center sticky top-2", style: this.state.style })
     ] }) });
   }
 }
@@ -369,7 +393,7 @@ class Events extends Component {
     return /* @__PURE__ */ jsx(Section, { id: "events", title: "Events", titleBar: true, link: "/news", children: /* @__PURE__ */ jsxs("div", { className: "grid grid-cols-1 sm:grid-cols-3 gap-4", children: [
       /* @__PURE__ */ jsxs("div", { className: "py-2", children: [
         /* @__PURE__ */ jsxs("a", { href: "#", className: "hover:opacity-50 hover:underline", children: [
-          /* @__PURE__ */ jsx("div", { className: "w-full size-64 bg-no-repeat bg-cover bg-center bg-[url('/images/news-1.png')]" }),
+          /* @__PURE__ */ jsx("div", { className: "w-full size-80 bg-no-repeat bg-cover bg-center bg-[url('/images/news-1.png')]" }),
           /* @__PURE__ */ jsx("p", { className: "py-2 font-bold", children: "Exhibition: He Xiangyu monograph released by Distanz" })
         ] }),
         /* @__PURE__ */ jsx("p", { className: "py-1", children: "From March 2016" }),
@@ -377,7 +401,7 @@ class Events extends Component {
       ] }),
       /* @__PURE__ */ jsxs("div", { className: "py-2", children: [
         /* @__PURE__ */ jsxs("a", { href: "#", className: "hover:opacity-50 hover:underline", children: [
-          /* @__PURE__ */ jsx("div", { className: "w-full size-64 bg-no-repeat bg-cover bg-center bg-[url('/images/news-2.png')]" }),
+          /* @__PURE__ */ jsx("div", { className: "w-full size-80 bg-no-repeat bg-cover bg-center bg-[url('/images/news-2.png')]" }),
           /* @__PURE__ */ jsx("p", { className: "py-2 font-bold", children: "Exhibition: Runa islam at SFMOMA, San Francisco" })
         ] }),
         /* @__PURE__ */ jsx("p", { className: "py-1", children: "From March 2016" }),
@@ -385,7 +409,7 @@ class Events extends Component {
       ] }),
       /* @__PURE__ */ jsxs("div", { className: "py-2", children: [
         /* @__PURE__ */ jsxs("a", { href: "#", className: "hover:opacity-50 hover:underline", children: [
-          /* @__PURE__ */ jsx("div", { className: "w-full size-64 bg-no-repeat bg-cover bg-center bg-[url('/images/news-3.png')]" }),
+          /* @__PURE__ */ jsx("div", { className: "w-full size-80 bg-no-repeat bg-cover bg-center bg-[url('/images/news-3.png')]" }),
           /* @__PURE__ */ jsx("p", { className: "py-2 font-bold", children: "Preview: White Cube Mason's Yard" })
         ] }),
         /* @__PURE__ */ jsx("p", { className: "py-1", children: "19 January 2017, 6 to 8pm" }),
@@ -410,7 +434,7 @@ class Channel extends Component {
         }
       ),
       /* @__PURE__ */ jsxs("div", { className: "py-2 grid sm:grid-cols-2 grid-cols-1 gap-3", children: [
-        /* @__PURE__ */ jsx("p", { className: "py-1 font-bold", children: "Anselm Kiefer in conversation with Tim Marlow in the Auditorium" }),
+        /* @__PURE__ */ jsx("a", { href: "https://www.youtube.com/watch?v=vlm5tgistqA", target: "_blank", className: "py-1 font-bold hover:underline", children: "Anselm Kiefer in conversation with Tim Marlow in the Auditorium" }),
         /* @__PURE__ */ jsx("p", { className: "py-1", children: "In this film Anselm Kiefer discusses his work and his exhibition 'Walhalla' at White Cube Bermondsey with Tim Marlow." })
       ] })
     ] }) });
@@ -439,7 +463,7 @@ const route1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProper
   default: Index,
   meta
 }, Symbol.toStringTag, { value: "Module" }));
-const serverManifest = { "entry": { "module": "/assets/entry.client-jPehgn16.js", "imports": ["/assets/jsx-runtime-56DGgGmo.js", "/assets/components-BAmE7OwT.js"], "css": [] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasErrorBoundary": false, "module": "/assets/root-CQU6WK5k.js", "imports": ["/assets/jsx-runtime-56DGgGmo.js", "/assets/components-BAmE7OwT.js"], "css": [] }, "routes/_index": { "id": "routes/_index", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasErrorBoundary": false, "module": "/assets/_index-BgxgRn4U.js", "imports": ["/assets/jsx-runtime-56DGgGmo.js"], "css": [] } }, "url": "/assets/manifest-90063cce.js", "version": "90063cce" };
+const serverManifest = { "entry": { "module": "/assets/entry.client-jPehgn16.js", "imports": ["/assets/jsx-runtime-56DGgGmo.js", "/assets/components-BAmE7OwT.js"], "css": [] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasErrorBoundary": false, "module": "/assets/root-CnA9xRHk.js", "imports": ["/assets/jsx-runtime-56DGgGmo.js", "/assets/components-BAmE7OwT.js"], "css": [] }, "routes/_index": { "id": "routes/_index", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasErrorBoundary": false, "module": "/assets/_index-B-P1wxJK.js", "imports": ["/assets/jsx-runtime-56DGgGmo.js"], "css": [] } }, "url": "/assets/manifest-f60110ec.js", "version": "f60110ec" };
 const mode = "production";
 const assetsBuildDirectory = "build/client";
 const basename = "/";

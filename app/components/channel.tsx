@@ -17,7 +17,7 @@ export class Channel extends Component {
             allowFullScreen
           ></iframe>
           <div className="py-2 grid sm:grid-cols-2 grid-cols-1 gap-3">
-            <p className="py-1 font-bold">Anselm Kiefer in conversation with Tim Marlow in the Auditorium</p>
+            <a href="https://www.youtube.com/watch?v=vlm5tgistqA" target="_blank" className="py-1 font-bold hover:underline">Anselm Kiefer in conversation with Tim Marlow in the Auditorium</a>
             <p className="py-1">In this film Anselm Kiefer discusses his work and his exhibition 'Walhalla' at White Cube Bermondsey with Tim Marlow.</p>
           </div>
         </div>
