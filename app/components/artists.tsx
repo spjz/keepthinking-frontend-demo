@@ -8,7 +8,8 @@ export class Artists extends Component {
     this.state = {
       showCover: false,
       style: {},
-      images: []
+      images: [],
+      defaultCover: '/images/artist.png',
     };
   }
 
@@ -69,9 +70,11 @@ export class Artists extends Component {
   }
 
   handleMouseEnter(e:MouseEvent) {
+    let src = this.state.images[e.currentTarget.dataset.key];
+
     this.setState({
       showCover: true,
-      style: {"backgroundImage": "url('" + e.currentTarget.dataset.cover + "')"}
+      style: {"backgroundImage": "url('" + src + "')"}
     });
     if (!e.currentTarget.classList.contains('underline')) {
       e.currentTarget.classList.add('underline');
@@ -96,7 +99,7 @@ export class Artists extends Component {
     this.getArtists().map(
       (artistName, i) => {
         images[i] = new Image();
-        images[i].src = 'https://source.unsplash.com/random/?' + artistName;
+        images[i].src = 'https://source.unsplash.com/random/?' + encodeURI(artistName);
       }
     );
     this.setState({images: images});
@@ -109,7 +112,7 @@ export class Artists extends Component {
             <ul className="w-auto flex-grow flex-col flex-wrap columns-1 sm:columns-3">
               {this.getArtists().map((artistName, i) => (
                 <li key={i}
-                  data-cover={"https://source.unsplash.com/random/?" + artistName}
+                  data-key={i}
                   onMouseEnter={this.handleMouseEnter.bind(this)}
                   onMouseLeave={this.handleMouseLeave.bind(this)}> 
                   <a href="#" title={artistName}>

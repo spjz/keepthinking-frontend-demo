@@ -59,7 +59,7 @@ export class Header extends Component {
           <a href="#"
             onClick={this.handleToggleMenu.bind(this)}
             className="absolute top-0 right-0 py-6 px-8">
-              <img src="/public/icons/close.svg" />
+              <img src="/icons/close.svg" />
           </a>
         </nav>}
       </div>
