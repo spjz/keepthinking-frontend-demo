@@ -9,7 +9,6 @@ export class Artists extends Component {
       showCover: false,
       style: {},
       images: [],
-      defaultCover: '/images/artist.png',
     };
   }
 
@@ -70,8 +69,7 @@ export class Artists extends Component {
   }
 
   handleMouseEnter(e:MouseEvent) {
-    let src = this.state.images[e.currentTarget.dataset.key];
-
+    let src = this.state.images[e.currentTarget.dataset.key].src;
     this.setState({
       showCover: true,
       style: {"backgroundImage": "url('" + src + "')"}
@@ -85,7 +83,7 @@ export class Artists extends Component {
   handleMouseLeave(e:MouseEvent) {
     this.setState({
       showCover: false,
-      style: {"backgroundImage": "url('" + this.state.defaultCover + "')"}
+      style: {"backgroundImage": "url('/images/artist.png')"}
     });
     if (e.currentTarget.classList.contains('underline')) {
       e.currentTarget.classList.remove('underline');
@@ -102,7 +100,10 @@ export class Artists extends Component {
         images[i].src = 'https://source.unsplash.com/random/?' + encodeURI(artistName);
       }
     );
-    this.setState({images: images});
+    this.setState({
+      images: images,
+      style: {"backgroundImage": "url('/images/artist.png')"}
+    });
   }
 
   render() {
